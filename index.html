@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHIGURU — Adivasi Birth Cohort Study</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:   #1e3d28;
+    --forest-mid: #2c5a38;
+    --leaf:     #4a7c59;
+    --ochre:    #c8922a;
+    --ochre-lt: #e0b060;
+    --clay:     #8b5e3c;
+    --cream:    #f5f0e8;
+    --parchment:#ede5d5;
+    --ink:      #1a1a14;
+    --muted:    #6b6b5a;
+    --border:   rgba(30,61,40,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+    height: 64px;
+    background: rgba(30, 61, 40, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,146,42,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--ochre-lt);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    display: block;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover { color: var(--ochre-lt); }
+
+  .nav-cta {
+    background: var(--ochre);
+    color: white !important;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--ochre-lt) !important; color: var(--ink) !important; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    background: var(--forest);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(74,124,89,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 20% 80%, rgba(200,146,42,0.1) 0%, transparent 50%);
+  }
+
+  /* Leaf vein motif */
+  .hero-deco {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55%;
+    height: 90%;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Cpath d='M200 480 Q200 250 200 20' stroke='%23c8922a' stroke-width='2' fill='none'/%3E%3Cpath d='M200 400 Q150 350 80 320' stroke='%23c8922a' stroke-width='1.5' fill='none'/%3E%3Cpath d='M200 350 Q260 300 340 280' stroke='%23c8922a' stroke-width='1.5' fill='none'/%3E%3Cpath d='M200 290 Q140 240 60 220' stroke='%23c8922a' stroke-width='1.5' fill='none'/%3E%3Cpath d='M200 240 Q270 190 360 175' stroke='%23c8922a' stroke-width='1.5' fill='none'/%3E%3Cpath d='M200 185 Q130 145 50 130' stroke='%23c8922a' stroke-width='1.5' fill='none'/%3E%3Cpath d='M200 135 Q260 95 340 85' stroke='%23c8922a' stroke-width='1.5' fill='none'/%3E%3Cellipse cx='200' cy='20' rx='30' ry='18' stroke='%23c8922a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
+
+  .hero-content {
+    position: relative;
+    padding: 10rem 5vw 6rem;
+    max-width: 780px;
+    animation: fadeUp 1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    color: var(--ochre);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-top: 1px solid var(--ochre);
+    padding-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease 0.1s both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    color: white;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--ochre-lt);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.02em;
+    animation: fadeUp 1s ease 0.3s both;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 560px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 3rem;
+    animation: fadeUp 1s ease 0.45s both;
+  }
+
+  .badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 2px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease 0.5s both;
+  }
+
+  .btn-primary {
+    background: var(--ochre);
+    color: white;
+    padding: 0.85rem 2.2rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--ochre-lt);
+    color: var(--ink);
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.8);
+    padding: 0.85rem 2.2rem;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--ochre-lt);
+    color: var(--ochre-lt);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 5vw;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: fadeUp 1s ease 0.7s both;
+  }
+
+  .hero-scroll::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+
+  /* ─── SECTION WRAPPER ─── */
+  section { padding: 6rem 5vw; }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--ochre);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--forest);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--clay);
+  }
+
+  .section-body {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 640px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* ─── WHY THIS COHORT ─── */
+  #about {
+    background: var(--parchment);
+    position: relative;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .about-col h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 1rem;
+  }
+
+  .about-col p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .about-col p + p { margin-top: 1rem; }
+
+  .stat-pull {
+    background: var(--forest);
+    color: white;
+    padding: 2rem;
+    border-radius: 3px;
+    margin-top: 2rem;
+  }
+
+  .stat-pull .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--ochre-lt);
+    line-height: 1;
+  }
+
+  .stat-pull .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+    margin-top: 0.4rem;
+  }
+
+  .highlight-box {
+    border-left: 3px solid var(--ochre);
+    padding: 1.2rem 1.5rem;
+    background: rgba(200,146,42,0.06);
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--forest-mid);
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  /* ─── STUDY DESIGN ─── */
+  #design { background: var(--cream); }
+
+  .design-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .design-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  .design-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .design-table td {
+    padding: 0.9rem 0;
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+
+  .design-table td:first-child {
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: 38%;
+    font-weight: 500;
+    padding-right: 1rem;
+  }
+
+  .design-table td:last-child {
+    color: var(--forest);
+    font-weight: 400;
+  }
+
+  .domains-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .domain-chip {
+    background: var(--parchment);
+    border: 1px solid var(--border);
+    padding: 0.65rem 0.9rem;
+    font-size: 0.78rem;
+    color: var(--forest-mid);
+    border-radius: 2px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .domain-chip::before {
+    content: '○ ';
+    color: var(--ochre);
+    font-size: 0.6rem;
+  }
+
+  .protocol-card {
+    background: var(--forest);
+    color: white;
+    padding: 2.2rem;
+    border-radius: 3px;
+    margin-top: 2rem;
+  }
+
+  .protocol-card .pc-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.8rem;
+  }
+
+  .protocol-card .pc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 1.2rem;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .protocol-card a {
+    display: inline-block;
+    color: var(--ochre-lt);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,146,42,0.4);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+  }
+
+  .protocol-card a:hover {
+    color: white;
+    border-color: white;
+  }
+
+  /* ─── KEY FINDINGS ─── */
+  #findings {
+    background: var(--forest);
+    color: white;
+  }
+
+  #findings .section-title { color: white; }
+  #findings .section-body { color: rgba(255,255,255,0.6); }
+
+  .findings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 3rem;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .finding-card {
+    background: rgba(255,255,255,0.04);
+    padding: 2.5rem 2rem;
+    transition: background 0.2s;
+  }
+
+  .finding-card:hover { background: rgba(255,255,255,0.07); }
+
+  .finding-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.8rem;
+    font-weight: 300;
+    color: var(--ochre-lt);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .finding-num sup {
+    font-size: 1.8rem;
+    vertical-align: super;
+  }
+
+  .finding-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+  }
+
+  .finding-source {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.25);
+    margin-top: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .findings-coming {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2.5rem;
+    background: rgba(255,255,255,0.03);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .coming-soon-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(200,146,42,0.15);
+    border: 1px solid rgba(200,146,42,0.3);
+    color: var(--ochre-lt);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 0.8rem;
+  }
+
+  .coming-soon-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ochre);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ─── TEAM ─── */
+  #team { background: var(--parchment); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .team-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 1.8rem 1.5rem;
+    border-radius: 3px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .team-card:hover {
+    border-color: var(--leaf);
+    transform: translateY(-2px);
+  }
+
+  .team-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--forest);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--ochre-lt);
+  }
+
+  .team-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.2rem;
+  }
+
+  .team-role {
+    font-size: 0.75rem;
+    color: var(--ochre);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .team-inst {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .team-placeholder {
+    background: var(--cream);
+    border: 1px dashed rgba(30,61,40,0.2);
+    padding: 1.8rem 1.5rem;
+    border-radius: 3px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  /* ─── PARTNERS ─── */
+  #partners { background: var(--cream); }
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 3rem;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .partner-card {
+    background: var(--cream);
+    padding: 2.2rem;
+    transition: background 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .partner-card:hover { background: var(--parchment); }
+
+  .partner-abbr {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .partner-name {
+    font-size: 0.82rem;
+    color: var(--forest-mid);
+    font-weight: 500;
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+
+  .partner-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .partner-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,146,42,0.3);
+    padding-bottom: 1px;
+    font-weight: 500;
+  }
+
+  .partner-coming {
+    background: var(--parchment) !important;
+    opacity: 0.7;
+    cursor: default;
+  }
+
+  .partner-coming .partner-abbr { color: var(--muted); }
+  .partner-coming .partner-name { color: var(--muted); }
+
+  /* ─── FUNDERS ─── */
+  #funders {
+    background: var(--parchment);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .funders-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .funder-card {
+    border-top: 3px solid var(--ochre);
+    padding-top: 2rem;
+  }
+
+  .funder-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.8rem;
+  }
+
+  .funder-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .funder-grant {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--clay);
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+
+  .funder-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,146,42,0.3);
+    font-weight: 500;
+  }
+
+  .funder-placeholder {
+    background: var(--cream);
+    border: 1px dashed rgba(30,61,40,0.2);
+    padding: 2rem;
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  /* ─── COLLABORATE ─── */
+  #collaborate {
+    background: var(--forest-mid);
+    color: white;
+  }
+
+  #collaborate .section-title { color: white; }
+
+  .collab-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .collab-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  .collab-types {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .collab-type {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.2rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .collab-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(200,146,42,0.2);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+  .collab-text h4 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 0.2rem;
+  }
+
+  .collab-text p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+  }
+
+  .contact-form-placeholder {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 2.5rem;
+  }
+
+  .contact-form-placeholder p {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-field {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: white;
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border-radius: 2px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .contact-field::placeholder { color: rgba(255,255,255,0.3); }
+  .contact-field:focus { border-color: rgba(200,146,42,0.5); }
+
+  textarea.contact-field { height: 110px; resize: none; }
+
+  .contact-coming {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(200,146,42,0.08);
+    border: 1px dashed rgba(200,146,42,0.3);
+    border-radius: 2px;
+    color: var(--ochre-lt);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── PUBLICATIONS ─── */
+  #publications { background: var(--cream); }
+
+  .pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .pub-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1.8rem;
+    border: 1px solid var(--border);
+    background: var(--parchment);
+    border-radius: 3px;
+    transition: border-color 0.2s;
+    text-decoration: none;
+  }
+
+  .pub-item:hover { border-color: var(--leaf); }
+
+  .pub-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--ochre);
+    line-height: 1;
+  }
+
+  .pub-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .pub-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--forest);
+    line-height: 1.35;
+    margin-bottom: 0.4rem;
+  }
+
+  .pub-authors {
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .pub-journal {
+    font-size: 0.78rem;
+    color: var(--clay);
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  .pub-placeholder {
+    padding: 2rem;
+    border: 1px dashed rgba(30,61,40,0.2);
+    border-radius: 3px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* ─── NEWS ─── */
+  #news { background: var(--parchment); }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .news-card {
+    border-top: 2px solid var(--border);
+    padding-top: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .news-card:hover { border-color: var(--ochre); }
+
+  .news-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  .news-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .news-body {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .news-placeholder {
+    border-top: 2px dashed rgba(30,61,40,0.15);
+    padding-top: 1.5rem;
+    opacity: 0.5;
+  }
+
+  /* ─── GALLERY ─── */
+  #gallery {
+    background: var(--ink);
+    padding: 4rem 5vw;
+  }
+
+  #gallery .section-title { color: white; }
+
+  .gallery-placeholder {
+    margin-top: 3rem;
+    height: 340px;
+    background: rgba(255,255,255,0.04);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .gallery-placeholder .gp-icon {
+    font-size: 3rem;
+    opacity: 0.3;
+  }
+
+  .gallery-placeholder p {
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--forest);
+    color: rgba(255,255,255,0.6);
+    padding: 4rem 5vw 2.5rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ochre-lt);
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col h4 {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col ul li a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--ochre-lt); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .footer-location {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .about-grid,
+    .design-layout,
+    .collab-layout,
+    .funders-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+
+    .findings-grid,
+    .partners-grid { grid-template-columns: 1fr 1fr; }
+
+    .news-grid { grid-template-columns: 1fr; }
+
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+    .team-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  }
+
+  @media (max-width: 600px) {
+    nav .nav-links { display: none; }
+    .findings-grid,
+    .partners-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .domains-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 5vw; }
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  /* Content visible by default — JS enhances with animation only when safe */
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .js-reveal-ready .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .js-reveal-ready .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ──────────────── NAV ──────────────── -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    CHIGURU
+    <span>Adivasi Birth Cohort</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#design">Study Design</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#partners">Partners</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#collaborate" class="nav-cta">Collaborate</a></li>
+  </ul>
+</nav>
+
+<!-- ──────────────── HERO ──────────────── -->
+<section id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-deco"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Chamarajanagar District, Karnataka · Est. 2023</div>
+    <h1 class="hero-title"><em>Chiguru</em></h1>
+    <p class="hero-subtitle">The first leaves tell the whole tree's story.</p>
+    <p class="hero-desc">
+      India's first large-scale prospective birth cohort study among Adivasi communities, examining how early-life exposures shape the growth and development of indigenous children in southern Karnataka.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">Soliga · Jenukuruba · Bettakuruba</span>
+      <span class="badge">2,730+ enrolled</span>
+      <span class="badge">2021–2026</span>
+      <span class="badge">DBT India Alliance funded</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#collaborate" class="btn-primary">Collaborate with us</a>
+      <a href="https://wellcomeopenresearch.org/articles/10-602" target="_blank" class="btn-outline">Read the Protocol ↗</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</section>
+
+<!-- ──────────────── ABOUT ──────────────── -->
+<section id="about">
+  <div class="section-label">Why this cohort matters</div>
+  <h2 class="section-title">Health equity begins<br>at <em>birth</em></h2>
+
+  <div class="about-grid">
+    <div class="about-col reveal">
+      <h3>The Adivasi health gap</h3>
+      <p>
+        Adivasi communities — India's indigenous forest-dwelling peoples — carry a disproportionate burden of malnutrition and developmental disadvantage. In Chamarajanagar district, the southernmost district in Karnataka, three communities (Soliga, Jenukuruba, and Bettakuruba) live in and around legally protected forest areas and have historically faced displacement, restricted access to healthcare, and under-representation in public health research.
+      </p>
+      <p>
+        Chamarajanagar ranks 22nd among 31 Karnataka districts on the Human Development Index, yet district-level averages consistently mask the far worse health outcomes of the Adivasi population living within it.
+      </p>
+      <div class="highlight-box">
+        <strong>No prior peer-reviewed prospective cohort study has specifically examined Adivasi communities in India or other LMICs.</strong> CHIGURU fills a critical evidence gap at the intersection of indigenous health and early childhood development.
+      </div>
+    </div>
+
+    <div class="about-col reveal">
+      <h3>What makes CHIGURU unique</h3>
+      <p>
+        CHIGURU is the <strong>first large-scale Adivasi birth cohort in India</strong>. It applies the Developmental Origins of Health and Disease (DoHaD) framework to understand how parental substance use — tobacco and alcohol — interacts with malnutrition, stress, and environmental exposures to shape child growth and early developmental outcomes from birth to age three.
+      </p>
+      <p>
+        By following children and their families longitudinally from birth, the cohort generates evidence that is not just novel scientifically, but actionable for the policies and programmes that determine how Adivasi children are served by the State.
+      </p>
+      <div class="stat-pull">
+        <div class="stat-num">46<sup style="font-size:1.6rem;vertical-align:super">%</sup></div>
+        <div class="stat-label">of Adivasi women of reproductive age are underweight — vs. 18% in the district overall (NFHS-5)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── STUDY DESIGN ──────────────── -->
+<section id="design">
+  <div class="section-label">Methods &amp; Protocol</div>
+  <h2 class="section-title">Study <em>Design</em></h2>
+  <p class="section-body">A rigorous five-year longitudinal cohort following newborns and their families across Adivasi hamlets in Chamarajanagar district.</p>
+
+  <div class="design-layout">
+    <div class="reveal">
+      <table class="design-table">
+        <tr>
+          <td>Study type</td>
+          <td>Prospective longitudinal birth cohort</td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td>Chamarajanagar district, Karnataka, India</td>
+        </tr>
+        <tr>
+          <td>Communities</td>
+          <td>Soliga, Jenukuruba, Bettakuruba</td>
+        </tr>
+        <tr>
+          <td>Study period</td>
+          <td>2021–2026 (current grant cycle) · <em style="color:var(--ochre);font-size:0.85em;">Funding being sought to continue for decades</em></td>
+        </tr>
+        <tr>
+          <td>Enrolment began</td>
+          <td>May 2023</td>
+        </tr>
+        <tr>
+          <td>Target sample</td>
+          <td>650 newborns + 5,000 family members</td>
+        </tr>
+        <tr>
+          <td>Enrolled (2025)</td>
+          <td>2,730 individuals including 821 postnatal women</td>
+        </tr>
+        <tr>
+          <td>Primary outcome</td>
+          <td>Child growth parameters (weight, height, BMI)</td>
+        </tr>
+        <tr>
+          <td>Secondary outcome</td>
+          <td>Early childhood development: gross motor, fine motor, language, social domains</td>
+        </tr>
+        <tr>
+          <td>Framework</td>
+          <td>Developmental Origins of Health and Disease (DoHaD)</td>
+        </tr>
+      </table>
+
+        <div class="protocol-card" style="margin-top:2rem;">
+        <div class="pc-label">Published Protocol</div>
+        <div class="pc-title">CHIGURU Adivasi Birth Cohort Study: A Protocol for Examining the Effects of Parental Substance Use on Child Development in Southern Indian Adivasi Communities</div>
+        <a href="https://wellcomeopenresearch.org/articles/10-602" target="_blank">Read full protocol at Wellcome Open Research ↗</a>
+        <p style="margin-top:1.2rem;font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7;">
+          The current grant runs through 2026. The team is actively seeking funding to sustain CHIGURU as a long-running generational cohort — with the ambition of following this community's children for decades, making it one of the few indigenous cohorts in the world with longitudinal depth.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--forest);margin-bottom:1rem;font-weight:600;">Domains measured</h3>
+      <div class="domains-grid">
+        <div class="domain-chip">Perinatal care &amp; services</div>
+        <div class="domain-chip">Anthropometry</div>
+        <div class="domain-chip">Dietary diversity</div>
+        <div class="domain-chip">Indoor air pollution</div>
+        <div class="domain-chip">Maternal mental health</div>
+        <div class="domain-chip">Social support</div>
+        <div class="domain-chip">Substance use (tobacco &amp; alcohol)</div>
+        <div class="domain-chip">Household wealth index</div>
+        <div class="domain-chip">Morbidity status</div>
+        <div class="domain-chip">Child development milestones</div>
+        <div class="domain-chip">Blood haemoglobin</div>
+        <div class="domain-chip">Delivery information</div>
+      </div>
+
+      <div style="margin-top:2.5rem;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--forest);margin-bottom:1rem;font-weight:600;">Participant identification</h3>
+        <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;">
+          Pregnant women are mapped through district reproductive and child health officer lists, in partnership with the Zilla Budakattu Girijana Abhivruddhi Sangha (ZBGAS) — the indigenous welfare association of Soliga people — and local ASHAs. A study information video is provided in Kannada (Soliga dialect) before informed consent is sought from all household members.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── KEY FINDINGS ──────────────── -->
+<section id="findings">
+  <div class="section-label" style="color:var(--ochre);">Early evidence</div>
+  <h2 class="section-title">Key <em>Findings</em></h2>
+  <p class="section-body">Preliminary results from the first wave of CHIGURU data reveal striking health disparities within Adivasi communities that existing national surveys have consistently underestimated.</p>
+
+  <div class="findings-grid reveal">
+    <div class="finding-card">
+      <div class="finding-num">46<sup>%</sup></div>
+      <div class="finding-label">Adivasi women of reproductive age classified as underweight (BMI &lt; 18.5 kg/m²)</div>
+      <div class="finding-source">CHIGURU cohort, 2025 · vs. 18% in NFHS-5 district data</div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-num">2,730</div>
+      <div class="finding-label">Adivasi individuals enrolled, including 1,136 women of reproductive age</div>
+      <div class="finding-source">CHIGURU cohort enrolment, 2025</div>
+    </div>
+
+    <div class="finding-card">
+      <div class="finding-num">80<sup>%</sup></div>
+      <div class="finding-label">of enrolled women of reproductive age are postnatal women — the primary cohort participants</div>
+      <div class="finding-source">CHIGURU cohort, 2025</div>
+    </div>
+
+    <div class="findings-coming">
+      <div class="coming-soon-tag">More findings coming</div>
+      <p style="font-size:0.82rem;color:rgba(255,255,255,0.35);margin-top:0.3rem;">
+        Child growth outcomes and developmental milestone data from follow-up waves will be published here as analyses are completed.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── TEAM ──────────────── -->
+<section id="team">
+  <div class="section-label">The people behind CHIGURU</div>
+  <h2 class="section-title">Our <em>Team</em></h2>
+  <p class="section-body">CHIGURU is driven by a multidisciplinary team of researchers, clinicians, and field staff with deep roots in the Chamarajanagar community.</p>
+
+  <div class="team-grid reveal">
+
+    <div class="team-card">
+      <div class="team-avatar">TS</div>
+      <div class="team-name">Dr. Tanya Seshadri</div>
+      <div class="team-role">Study Lead</div>
+      <div class="team-inst">Community Health Practitioner &amp; Researcher; Adjunct Faculty, IPH Bengaluru; Vivekananda Girijana Kalyana Kendra, BR Hills</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">PS</div>
+      <div class="team-name">Prof. Prashanth N. Srinivas</div>
+      <div class="team-role">Principal Investigator</div>
+      <div class="team-inst">Director, Institute of Public Health, Bengaluru</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">YC</div>
+      <div class="team-name">Dr. Yogish Channa Basappa</div>
+      <div class="team-role">Co-Investigator</div>
+      <div class="team-inst">Assistant Professor, Institute of Public Health, Bengaluru</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">GB</div>
+      <div class="team-name">Prof. Giridhara R. Babu</div>
+      <div class="team-role">Co-Investigator</div>
+      <div class="team-inst">Professor of Population Medicine, College of Medicine, QU Health, Qatar University; Visiting Professor, PHFI / CDLR, Bengaluru</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">DM</div>
+      <div class="team-name">Dr. Debarati Mukherjee</div>
+      <div class="team-role">Co-Investigator</div>
+      <div class="team-inst">Professor &amp; Professor-in-Charge, PHFI Centre for Developmental and Lifecourse Research; IIPH Bengaluru, PHFI</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">SS</div>
+      <div class="team-name">Dr. Suresh S. Shapeti</div>
+      <div class="team-role">Co-Investigator</div>
+      <div class="team-inst">Special Officer &amp; Director (I/C), Indian Institute of Public Health Bengaluru, PHFI</div>
+    </div>
+
+    <div class="team-card">
+      <div class="team-avatar">PŚ</div>
+      <div class="team-name">Ms. Prafulla Shriyan</div>
+      <div class="team-role">Research Fellow</div>
+      <div class="team-inst">Indian Institute of Public Health, Public Health Foundation of India, Bengaluru</div>
+    </div>
+
+    <div class="team-placeholder">
+      <div style="font-size:1.8rem;margin-bottom:0.5rem;opacity:0.2;">+</div>
+      Field &amp; Data Team<br><span style="opacity:0.5;">Details coming soon</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ──────────────── PARTNERS ──────────────── -->
+<section id="partners">
+  <div class="section-label">Institutions &amp; Collaborators</div>
+  <h2 class="section-title">Partner <em>Institutions</em></h2>
+  <p class="section-body">CHIGURU is a collaborative effort across leading public health institutions in India, united by a shared commitment to Adivasi health equity.</p>
+
+  <div class="partners-grid reveal">
+
+    <a href="https://iphbengaluru.res.in" target="_blank" class="partner-card">
+      <div class="partner-abbr">IPH</div>
+      <div class="partner-name">Institute of Public Health, Bengaluru</div>
+      <div class="partner-desc">Lead institution and home of CTRITH — the Centre for Training, Research and Innovation in Tribal Health — under whose mandate CHIGURU was established.</div>
+      <span class="partner-link">iphbengaluru.res.in ↗</span>
+    </a>
+
+    <div class="partner-card">
+      <div class="partner-abbr">JSS</div>
+      <div class="partner-name">JSS Medical College, Mysore</div>
+      <div class="partner-desc">Clinical partner institution providing medical expertise and infrastructure for CHIGURU's health assessment components in southern Karnataka.</div>
+      <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Details coming soon</span>
+    </div>
+
+    <a href="https://iphindia.org" target="_blank" class="partner-card">
+      <div class="partner-abbr">IIPH-B</div>
+      <div class="partner-name">Indian Institute of Public Health, Bengaluru (PHFI)</div>
+      <div class="partner-desc">Research and academic partner within the Public Health Foundation of India network, contributing epidemiological and implementation science expertise.</div>
+      <span class="partner-link">iphindia.org ↗</span>
+    </a>
+
+    <a href="https://phfi.org/phfi-center#iprc13" target="_blank" class="partner-card">
+      <div class="partner-abbr">CDLR</div>
+      <div class="partner-name">PHFI Centre for Developmental and Lifecourse Research</div>
+      <div class="partner-desc">Based in Bengaluru, the CDLR shares CHIGURU's DoHaD framework and hosts the MAASTHI urban birth cohort — enabling cross-cohort comparisons between urban and Adivasi populations across Karnataka.</div>
+      <span class="partner-link">phfi.org ↗</span>
+    </a>
+
+    <div class="partner-card partner-coming">
+      <div class="partner-abbr" style="color:var(--muted);">KBCC</div>
+      <div class="partner-name" style="color:var(--muted);">Karnataka Birth Cohorts Consortium</div>
+      <div class="partner-desc">A consortium connecting birth cohort studies across Karnataka to enable data harmonisation, methodological alignment, and collaborative research on early childhood determinants of health.</div>
+      <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Website coming soon</span>
+    </div>
+
+    <a href="https://www.indiaalliance.org" target="_blank" class="partner-card">
+      <div class="partner-abbr">IA</div>
+      <div class="partner-name">DBT Wellcome Trust India Alliance</div>
+      <div class="partner-desc">Primary funder of CTRITH, the institutional home of CHIGURU. The India Alliance is an independent public charity supporting health and biomedical research in India.</div>
+      <span class="partner-link">indiaalliance.org ↗</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ──────────────── FUNDERS ──────────────── -->
+<section id="funders">
+  <div class="section-label">Funding &amp; Support</div>
+  <h2 class="section-title">Our <em>Funders</em></h2>
+  <p class="section-body">CHIGURU is made possible through the generous support of funders who recognise that Adivasi health equity is a critical and under-resourced priority.</p>
+
+  <div class="funders-layout reveal">
+    <div class="funder-card">
+      <div class="funder-name">DBT Wellcome Trust India Alliance</div>
+      <div class="funder-desc">
+        The India Alliance is an independent public charity in India that funds health and biomedical research. CHIGURU operates under the Centre for Training, Research and Innovation in Tribal Health (CTRITH), established through an India Alliance grant at the Institute of Public Health, Bengaluru.
+      </div>
+      <div class="funder-grant">Grant: CTRITH, Centre for Training Research and Innovation in Tribal Health</div>
+      <a href="https://www.indiaalliance.org" target="_blank" class="funder-link">indiaalliance.org ↗</a>
+    </div>
+
+    <div class="funder-card">
+      <div class="funder-placeholder">
+        <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;">Future Funders</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--forest);margin-bottom:0.8rem;line-height:1.4;">Support the only Adivasi birth cohort in India</div>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;">
+          CHIGURU is actively seeking institutional and philanthropic partners to sustain and expand its work beyond 2026. If your organisation shares a commitment to health equity for indigenous communities, we would welcome a conversation.
+        </p>
+        <a href="#collaborate" class="btn-primary" style="margin-top:1.5rem;display:inline-block;">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── COLLABORATE ──────────────── -->
+<section id="collaborate">
+  <div class="section-label" style="color:var(--ochre);">Work with us</div>
+  <h2 class="section-title">Collaborate <em>with</em> CHIGURU</h2>
+
+  <div class="collab-layout">
+    <div>
+      <p class="collab-lead">
+        We welcome collaborations with researchers, institutions, and funders who share our commitment to understanding and improving the health of India's most marginalised children.
+      </p>
+      <div class="collab-types">
+        <div class="collab-type">
+          <div class="collab-icon">🔬</div>
+          <div class="collab-text">
+            <h4>Research collaboration</h4>
+            <p>Joint sub-studies, nested research, or methodological partnerships using CHIGURU infrastructure and data.</p>
+          </div>
+        </div>
+        <div class="collab-type">
+          <div class="collab-icon">📊</div>
+          <div class="collab-text">
+            <h4>Data access</h4>
+            <p>Proposals for access to CHIGURU datasets for independent analysis or cross-cohort comparisons.</p>
+          </div>
+        </div>
+        <div class="collab-type">
+          <div class="collab-icon">🎓</div>
+          <div class="collab-text">
+            <h4>Student placements &amp; fellowships</h4>
+            <p>Opportunities for PhD, postdoc, and MPH students to work within the CHIGURU field team.</p>
+          </div>
+        </div>
+        <div class="collab-type">
+          <div class="collab-icon">🏛️</div>
+          <div class="collab-text">
+            <h4>Policy partnerships</h4>
+            <p>Engagement with government and non-government stakeholders to translate CHIGURU findings into action for Adivasi communities.</p>
+          </div>
+        </div>
+        <div class="collab-type">
+          <div class="collab-icon">💰</div>
+          <div class="collab-text">
+            <h4>Funding partnerships</h4>
+            <p>Support to sustain and scale the cohort beyond its current grant cycle, including bridge funding and expansion to new communities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="contact-form-placeholder">
+        <p>To initiate a collaboration or express interest in supporting CHIGURU, please get in touch with our team.</p>
+        <input type="text" class="contact-field" placeholder="Your name">
+        <input type="email" class="contact-field" placeholder="Email address">
+        <input type="text" class="contact-field" placeholder="Institution / Organisation">
+        <textarea class="contact-field" placeholder="Tell us briefly about your interest or proposed collaboration..."></textarea>
+        <div class="contact-coming">
+          Contact form — coming soon. In the meantime, please reach us at: <strong style="color:white;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f093989997858285b099809892959e97919c858285de829583de999e">[email&#160;protected]</a></strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── PUBLICATIONS ──────────────── -->
+<section id="publications">
+  <div class="section-label">Research outputs</div>
+  <h2 class="section-title">Publications <em>&amp; Resources</em></h2>
+
+  <div class="pub-list reveal">
+
+    <a href="https://wellcomeopenresearch.org/articles/10-602" target="_blank" class="pub-item">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-tag">Protocol · Wellcome Open Research</div>
+        <div class="pub-title">CHIGURU Adivasi Birth Cohort Study: A Protocol for Examining the Effects of Parental Substance Use on Child Development in Southern Indian Adivasi Communities</div>
+        <div class="pub-authors">Srinivas PN et al.</div>
+        <div class="pub-journal">Wellcome Open Research, 2025</div>
+      </div>
+    </a>
+
+    <a href="https://www.frontiersin.org/journals/global-womens-health/articles/10.3389/fgwh.2025.1684392/full" target="_blank" class="pub-item">
+      <div class="pub-year">2025</div>
+      <div>
+        <div class="pub-tag">Policy Brief · Frontiers in Global Women's Health</div>
+        <div class="pub-title">Addressing Anaemia in Adivasi Women of Reproductive Age: Urgent Policy Imperatives for Karnataka</div>
+        <div class="pub-authors">CHIGURU Cohort investigators</div>
+        <div class="pub-journal">Frontiers in Global Women's Health, 2025</div>
+      </div>
+    </a>
+
+    <div class="pub-placeholder">
+      <div class="coming-soon-tag" style="display:inline-flex;margin-bottom:0.8rem;font-size:0.7rem;background:rgba(30,61,40,0.08);border:1px solid rgba(30,61,40,0.15);color:var(--forest);padding:0.35rem 0.9rem;letter-spacing:0.12em;text-transform:uppercase;">Further publications coming</div>
+      <p>Child growth and developmental milestone outcomes from follow-up waves will be listed here as they are published.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ──────────────── NEWS ──────────────── -->
+<section id="news">
+  <div class="section-label">Updates</div>
+  <h2 class="section-title">News <em>&amp; Updates</em></h2>
+
+  <div class="news-grid reveal">
+
+    <div class="news-card">
+      <div class="news-date">2025 · Enrolment milestone</div>
+      <div class="news-title">2,730 participants enrolled in the CHIGURU cohort</div>
+      <div class="news-body">The CHIGURU team has reached a significant enrolment milestone with 2,730 Adivasi individuals enrolled, including 821 postnatal women and their family members across hamlets in Chamarajanagar district.</div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-date">2025 · Publication</div>
+      <div class="news-title">Policy brief published on anaemia in Adivasi women</div>
+      <div class="news-body">Drawing on early CHIGURU findings, a policy brief in Frontiers in Global Women's Health calls for tailored, multisectoral interventions addressing the disproportionate anaemia burden in Adivasi women in Karnataka.</div>
+    </div>
+
+    <div class="news-card news-placeholder">
+      <div class="news-date">Coming soon</div>
+      <div class="news-title">Next update</div>
+      <div class="news-body">Quarterly updates on cohort progress, publications, and events will appear here.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ──────────────── GALLERY ──────────────── -->
+<section id="gallery">
+  <div class="section-label" style="color:var(--ochre);">From the field</div>
+  <h2 class="section-title" style="color:white;">Gallery</h2>
+  <div class="gallery-placeholder">
+    <div class="gp-icon">📷</div>
+    <p>Field photographs — coming soon</p>
+    <p style="font-size:0.72rem;margin-top:0.3rem;opacity:0.6;">Images from fieldwork, community engagement, and Chamarajanagar will be added here</p>
+  </div>
+</section>
+
+<!-- ──────────────── FOOTER ──────────────── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">CHIGURU</div>
+      <div class="footer-tagline">The first leaves tell the whole tree's story.</div>
+      <div style="font-size:0.75rem;color:rgba(255,255,255,0.25);line-height:1.7;">
+        Established May 2023<br>
+        Chamarajanagar District, Karnataka, India
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Study</h4>
+      <ul>
+        <li><a href="#about">About CHIGURU</a></li>
+        <li><a href="#design">Study Design</a></li>
+        <li><a href="#findings">Key Findings</a></li>
+        <li><a href="#publications">Publications</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>People &amp; Partners</h4>
+      <ul>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#partners">Partner Institutions</a></li>
+        <li><a href="#funders">Funders</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#collaborate">Collaborate with us</a></li>
+        <li><a href="#news">News &amp; Updates</a></li>
+        <li><a href="https://wellcomeopenresearch.org/articles/10-602" target="_blank">Protocol paper ↗</a></li>
+        <li><a href="https://iphbengaluru.res.in/projects/cah/ctrith" target="_blank">CTRITH / IPH ↗</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 CHIGURU Adivasi Birth Cohort Study · Institute of Public Health, Bengaluru</span>
+    <div class="footer-location">
+      <span>📍</span>
+      <span>Chamarajanagar, Karnataka, India</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Safari-safe reveal: content visible by default, animation only when safe
+  if ('IntersectionObserver' in window) {
+    document.body.classList.add('js-reveal-ready');
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    setTimeout(function() {
+      reveals.forEach(function(r) {
+        var rect = r.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          r.classList.add('visible');
+        } else {
+          observer.observe(r);
+        }
+      });
+    }, 100);
+  }
+
+  // Active nav highlight on scroll
+  var sections = document.querySelectorAll('section[id]');
+  var navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', function() {
+    var current = '';
+    sections.forEach(function(s) {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(function(a) {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'rgba(224,176,96,1)' : '';
+    });
+  });
+</script>
+</body>
+</html>
