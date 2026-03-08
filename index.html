@@ -1717,8 +1717,46 @@
   </div>
 </footer>
 
+<!-- DRAFT NOTICE BANNER -->
+<div style="
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 9998;
+  background: #1a1a14;
+  border-top: 2px solid #c8922a;
+  padding: 0.7rem 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: 'Jost', sans-serif;
+">
+  <div style="display:flex;align-items:center;gap:0.8rem;">
+    <span style="
+      background: #c8922a;
+      color: #1a1a14;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      flex-shrink: 0;
+    ">Draft</span>
+    <span style="font-size:0.8rem;color:rgba(255,255,255,0.6);">
+      This is a draft website shared for internal review only. Content may contain errors or omissions — please send corrections to the team.
+    </span>
+  </div>
+  <span style="font-size:0.75rem;color:rgba(255,255,255,0.25);white-space:nowrap;">Not for public circulation</span>
+</div>
+
+<!-- padding so footer content isn't hidden behind banner -->
+<style>
+  footer { padding-bottom: 5rem !important; }
+</style>
+
 <script>
-  // Safari-safe reveal: content visible by default, animation only when safe
   if ('IntersectionObserver' in window) {
     document.body.classList.add('js-reveal-ready');
     var reveals = document.querySelectorAll('.reveal');
@@ -1743,7 +1781,6 @@
     }, 100);
   }
 
-  // Active nav highlight on scroll
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', function() {
