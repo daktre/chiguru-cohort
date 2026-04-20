@@ -462,6 +462,38 @@
     font-size: 0.6rem;
   }
 
+  /* Grouped domains (Individual / Household / Settlement) */
+  .domain-group { margin-top: 1.8rem; }
+  .domain-group:first-of-type { margin-top: 1rem; }
+
+  .domain-group-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0.9rem;
+  }
+
+  .domain-subgroup { margin-top: 1rem; }
+  .domain-subgroup:first-of-type { margin-top: 0; }
+
+  .domain-subgroup-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.98rem;
+    font-style: italic;
+    color: var(--forest-mid);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .domain-group .domains-grid,
+  .domain-subgroup .domains-grid {
+    margin-top: 0.35rem;
+  }
+
   .protocol-card {
     background: var(--forest);
     color: white;
@@ -1236,7 +1268,7 @@
         Adivasi communities — India's indigenous forest-dwelling peoples — carry a disproportionate burden of malnutrition and developmental disadvantage. In Chamarajanagar district, the southernmost district in Karnataka, three communities (Soliga, Jenukuruba, and Bettakuruba) live in and around legally protected forest areas and have historically faced displacement, restricted access to healthcare, and under-representation in public health research.
       </p>
       <p>
-        Chamarajanagar ranks 21nd among 31 Karnataka districts on the Human Development Index, yet district-level averages consistently mask the far worse health outcomes of the Adivasi population living within it.
+        Chamarajanagar ranks 21st among 31 Karnataka districts on the Human Development Index, yet district-level averages consistently mask the far worse health outcomes of the Adivasi population living within it.
       </p>
       <div class="highlight-box">
         <strong>No prior peer-reviewed prospective cohort study has specifically examined Adivasi communities in India or other LMICs.</strong> CHIGURU fills a critical evidence gap at the intersection of indigenous health and early childhood development.
@@ -1253,7 +1285,7 @@
       </p>
       <div class="stat-pull">
         <div class="stat-num">46<sup style="font-size:1.6rem;vertical-align:super">%</sup></div>
-        <div class="stat-label">of Adivasi women of reproductive age are underweight (BMI &lt;18.5 kg/m²) — vs. 18% in the district overall (NFHS-5)</div>
+        <div class="stat-label">of Adivasi women of reproductive age are underweight (BMI &lt;18.5 kg/m²) — compared with 18% of all women in Chamarajanagar (NFHS-5)</div>
       </div>
     </div>
   </div>
@@ -1263,7 +1295,7 @@
 <section id="design">
   <div class="section-label">Methods &amp; Protocol</div>
   <h2 class="section-title">Study <em>Design</em></h2>
-  <p class="section-body">A rigorous five-year longitudinal cohort following newborns and their families across Adivasi hamlets in Chamarajanagar district.</p>
+  <p class="section-body">A prospective longitudinal cohort following newborns and their families across Adivasi hamlets in Chamarajanagar district.</p>
 
   <div class="design-layout">
     <div class="reveal">
@@ -1287,6 +1319,10 @@
         <tr>
           <td>Enrolment began</td>
           <td>May 2023</td>
+        </tr>
+        <tr>
+          <td>Enrolment age</td>
+          <td>Infants aged 7–120 days, together with their mother, father and other household members</td>
         </tr>
         <tr>
           <td>Target sample</td>
@@ -1322,19 +1358,86 @@
 
     <div class="reveal">
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--forest);margin-bottom:1rem;font-weight:600;">Domains measured</h3>
-      <div class="domains-grid">
-        <div class="domain-chip">Perinatal care &amp; services</div>
-        <div class="domain-chip">Anthropometry</div>
-        <div class="domain-chip">Dietary diversity</div>
-        <div class="domain-chip">Indoor air pollution</div>
-        <div class="domain-chip">Maternal mental health</div>
-        <div class="domain-chip">Social support</div>
-        <div class="domain-chip">Substance use (tobacco &amp; alcohol)</div>
-        <div class="domain-chip">Household wealth index</div>
-        <div class="domain-chip">Morbidity status</div>
-        <div class="domain-chip">Child development milestones</div>
-        <div class="domain-chip">Blood haemoglobin</div>
-        <div class="domain-chip">Delivery information</div>
+      <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:0.5rem;">
+        Data is collected at three levels — individual, household, and settlement.
+      </p>
+
+      <!-- INDIVIDUAL -->
+      <div class="domain-group">
+        <div class="domain-group-label">Individual</div>
+
+        <div class="domain-subgroup">
+          <div class="domain-subgroup-label">Cohort child (to age 3)</div>
+          <div class="domains-grid">
+            <div class="domain-chip">Anthropometry</div>
+            <div class="domain-chip">Immunization</div>
+            <div class="domain-chip">Feeding practices</div>
+            <div class="domain-chip">Developmental milestones (MDAT)</div>
+            <div class="domain-chip">Haemoglobin</div>
+          </div>
+        </div>
+
+        <div class="domain-subgroup">
+          <div class="domain-subgroup-label">Mother (postnatal)</div>
+          <div class="domains-grid">
+            <div class="domain-chip">Perinatal &amp; delivery</div>
+            <div class="domain-chip">Anthropometry</div>
+            <div class="domain-chip">Blood pressure</div>
+            <div class="domain-chip">Mental health (EPDS, GAD-7)</div>
+            <div class="domain-chip">Social support</div>
+            <div class="domain-chip">Substance use</div>
+            <div class="domain-chip">24-hr dietary recall</div>
+            <div class="domain-chip">Haemoglobin</div>
+            <div class="domain-chip">Biomarkers: cotinine, GGT, sTfR, transferrin</div>
+          </div>
+        </div>
+
+        <div class="domain-subgroup">
+          <div class="domain-subgroup-label">Father</div>
+          <div class="domains-grid">
+            <div class="domain-chip">Anthropometry</div>
+            <div class="domain-chip">Blood pressure</div>
+            <div class="domain-chip">Substance use</div>
+            <div class="domain-chip">Mental health (PHQ-9)</div>
+            <div class="domain-chip">Chronic conditions</div>
+            <div class="domain-chip">24-hr dietary recall</div>
+            <div class="domain-chip">Haemoglobin</div>
+            <div class="domain-chip">Biomarkers: cotinine, GGT</div>
+          </div>
+        </div>
+
+        <div class="domain-subgroup">
+          <div class="domain-subgroup-label">Other household members</div>
+          <div class="domains-grid">
+            <div class="domain-chip">Anthropometry</div>
+            <div class="domain-chip">Blood pressure</div>
+            <div class="domain-chip">Substance use</div>
+            <div class="domain-chip">Haemoglobin</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOUSEHOLD -->
+      <div class="domain-group">
+        <div class="domain-group-label">Household</div>
+        <div class="domains-grid">
+          <div class="domain-chip">Wealth index</div>
+          <div class="domain-chip">Dietary diversity</div>
+          <div class="domain-chip">Food insecurity</div>
+          <div class="domain-chip">Indoor air pollution</div>
+          <div class="domain-chip">Outdoor air pollution</div>
+          <div class="domain-chip">Household composition</div>
+        </div>
+      </div>
+
+      <!-- SETTLEMENT -->
+      <div class="domain-group">
+        <div class="domain-group-label">Settlement</div>
+        <div class="domains-grid">
+          <div class="domain-chip">Healthcare access</div>
+          <div class="domain-chip">Geographic remoteness</div>
+          <div class="domain-chip">Urbanisation</div>
+        </div>
       </div>
 
       <div style="margin-top:2.5rem;">
