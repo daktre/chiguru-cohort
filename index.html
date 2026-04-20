@@ -632,6 +632,29 @@
   /* ─── TEAM ─── */
   #team { background: var(--parchment); }
 
+  .team-category {
+    margin-top: 2.5rem;
+  }
+
+  .team-category:first-of-type {
+    margin-top: 3rem;
+  }
+
+  .team-category-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 500;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.2rem;
+  }
+
+  .team-category .team-grid {
+    margin-top: 0;
+  }
+
   .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -1513,177 +1536,200 @@
   <h2 class="section-title">Our <em>Team</em></h2>
   <p class="section-body">CHIGURU is driven by a multidisciplinary team of researchers, clinicians, and field staff with deep roots in the Chamarajanagar community.</p>
 
-  <div class="team-grid reveal">
+  <!-- ── IPH BENGALURU ── -->
+  <div class="team-category reveal">
+    <div class="team-category-label">Institute of Public Health, Bengaluru</div>
+    <div class="team-grid">
 
-    <div class="team-card">
-      <div class="team-avatar">TS</div>
-      <div class="team-name">Dr. Tanya Seshadri</div>
-      <div class="team-role">Study Lead</div>
-      <div class="team-inst">Community Health Practitioner &amp; Researcher; Adjunct Faculty, IPH Bengaluru; Vivekananda Girijana Kalyana Kendra, BR Hills</div>
+      <div class="team-card">
+        <div class="team-avatar">TS</div>
+        <div class="team-name">Dr. Tanya Seshadri</div>
+        <div class="team-role">Study Lead</div>
+        <div class="team-inst">Community Health Practitioner &amp; Researcher; Adjunct Faculty, IPH Bengaluru; Vivekananda Girijana Kalyana Kendra, BR Hills</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">PS</div>
+        <div class="team-name">Prof. Prashanth N. Srinivas</div>
+        <div class="team-role">Principal Investigator</div>
+        <div class="team-inst">Director, Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">YC</div>
+        <div class="team-name">Dr. Yogish Channa Basappa</div>
+        <div class="team-role">Co-Investigator</div>
+        <div class="team-inst">Assistant Professor, Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">RA</div>
+        <div class="team-name">Rahul Amruthapuri</div>
+        <div class="team-role">Program Head, CTRITH</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">SS</div>
+        <div class="team-name">Santosh Sogal</div>
+        <div class="team-role">Clinical Research Scholar</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
     </div>
-
-    <div class="team-card">
-      <div class="team-avatar">PS</div>
-      <div class="team-name">Prof. Prashanth N. Srinivas</div>
-      <div class="team-role">Principal Investigator</div>
-      <div class="team-inst">Director, Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">YC</div>
-      <div class="team-name">Dr. Yogish Channa Basappa</div>
-      <div class="team-role">Co-Investigator</div>
-      <div class="team-inst">Assistant Professor, Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">GB</div>
-      <div class="team-name">Prof. Giridhara R. Babu</div>
-      <div class="team-role">Co-Investigator</div>
-      <div class="team-inst">Professor of Population Medicine, College of Medicine, QU Health, Qatar University; Visiting Professor, PHFI / CDLR, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">DM</div>
-      <div class="team-name">Dr. Debarati Mukherjee</div>
-      <div class="team-role">Co-Investigator</div>
-      <div class="team-inst">Professor &amp; Professor-in-Charge, PHFI Centre for Developmental and Lifecourse Research; IIPH Bengaluru, PHFI</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">SS</div>
-      <div class="team-name">Dr. Suresh S. Shapeti</div>
-      <div class="team-role">Co-Investigator</div>
-      <div class="team-inst">Special Officer &amp; Director (I/C), Indian Institute of Public Health Bengaluru, PHFI</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">PŚ</div>
-      <div class="team-name">Ms. Prafulla Shriyan</div>
-      <div class="team-role">Research Fellow</div>
-      <div class="team-inst">Indian Institute of Public Health, Public Health Foundation of India, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">RA</div>
-      <div class="team-name">Rahul Amruthapuri</div>
-      <div class="team-role">Program Head, CTRITH</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">DK</div>
-      <div class="team-name">Deepak Kumaraswamy</div>
-      <div class="team-role">Clinical Care Coordinator</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">MK</div>
-      <div class="team-name">Maithili Karthik</div>
-      <div class="team-role">PhD Scholar</div>
-      <div class="team-inst">Public Health Foundation of India / Indian Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">SS</div>
-      <div class="team-name">Santosh Sogal</div>
-      <div class="team-role">Clinical Research Scholar</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
   </div>
 
-  <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--forest);margin-top:3rem;margin-bottom:1rem;font-weight:600;">Field &amp; Data Management Team</h3>
-  <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:2rem;">
-    A dedicated field team ensures quality data collection, participant engagement, and integration of ancillary care across Adivasi hamlets in Chamarajanagar district.
-  </p>
+  <!-- ── IIPH-BENGALURU / PHFI ── -->
+  <div class="team-category reveal">
+    <div class="team-category-label">Indian Institute of Public Health, Bengaluru (PHFI)</div>
+    <div class="team-grid">
 
-  <div class="team-grid reveal" style="margin-top:2rem;">
-    <div class="team-card">
-      <div class="team-avatar">RB</div>
-      <div class="team-name">Rakesh B S</div>
-      <div class="team-role">Project Assistant</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      <div class="team-card">
+        <div class="team-avatar">SS</div>
+        <div class="team-name">Dr. Suresh S. Shapeti</div>
+        <div class="team-role">Co-Investigator</div>
+        <div class="team-inst">Special Officer &amp; Director (I/C), Indian Institute of Public Health Bengaluru, PHFI</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">DM</div>
+        <div class="team-name">Dr. Debarati Mukherjee</div>
+        <div class="team-role">Co-Investigator</div>
+        <div class="team-inst">Professor &amp; Professor-in-Charge, PHFI Centre for Developmental and Lifecourse Research; IIPH Bengaluru, PHFI</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">PŚ</div>
+        <div class="team-name">Ms. Prafulla Shriyan</div>
+        <div class="team-role">Research Fellow</div>
+        <div class="team-inst">Indian Institute of Public Health, Public Health Foundation of India, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">MK</div>
+        <div class="team-name">Maithili Karthik</div>
+        <div class="team-role">PhD Scholar</div>
+        <div class="team-inst">Public Health Foundation of India / Indian Institute of Public Health, Bengaluru</div>
+      </div>
+
     </div>
+  </div>
 
-    <div class="team-card">
-      <div class="team-avatar">VB</div>
-      <div class="team-name">Vinutha B</div>
-      <div class="team-role">Field Supervisor</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
+  <!-- ── COLLABORATING INSTITUTIONS ── -->
+  <div class="team-category reveal">
+    <div class="team-category-label">Collaborating Institutions</div>
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-avatar">GB</div>
+        <div class="team-name">Prof. Giridhara R. Babu</div>
+        <div class="team-role">Co-Investigator</div>
+        <div class="team-inst">Professor of Population Medicine, College of Medicine, QU Health, Qatar University; Visiting Professor, PHFI / CDLR, Bengaluru</div>
+      </div>
+
     </div>
+  </div>
 
-    <div class="team-card">
-      <div class="team-avatar">JM</div>
-      <div class="team-name">Jadeswamy M</div>
-      <div class="team-role">Field Supervisor-cum-Community Health Nurse</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
+  <!-- ── FIELD & DATA MANAGEMENT TEAM ── -->
+  <div class="team-category reveal">
+    <div class="team-category-label">Field Operations &amp; Community Care · IPH Bengaluru</div>
+    <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:1.5rem;">
+      A dedicated field team ensures quality data collection, participant engagement, and integration of ancillary care across Adivasi hamlets in Chamarajanagar district.
+    </p>
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-avatar">DK</div>
+        <div class="team-name">Deepak Kumaraswamy</div>
+        <div class="team-role">Clinical Care Coordinator</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">RB</div>
+        <div class="team-name">Rakesh B S</div>
+        <div class="team-role">Project Assistant</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">VB</div>
+        <div class="team-name">Vinutha B</div>
+        <div class="team-role">Field Supervisor</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">JM</div>
+        <div class="team-name">Jadeswamy M</div>
+        <div class="team-role">Field Supervisor-cum-Community Health Nurse</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">DU</div>
+        <div class="team-name">Dundamma</div>
+        <div class="team-role">Field Supervisor-cum-Community Health Nurse</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">PA</div>
+        <div class="team-name">Padeyappa</div>
+        <div class="team-role">Field Supervisor-cum-Field Investigator</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">PM</div>
+        <div class="team-name">Parvathi M</div>
+        <div class="team-role">Field Supervisor-cum-Field Investigator</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">RR</div>
+        <div class="team-name">Ratnamma R</div>
+        <div class="team-role">Community Health Nurse</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">SY</div>
+        <div class="team-name">Samy</div>
+        <div class="team-role">Community Health Nurse</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">CP</div>
+        <div class="team-name">Chaitra P</div>
+        <div class="team-role">Field Investigator</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">AS</div>
+        <div class="team-name">Asha S</div>
+        <div class="team-role">Field Investigator</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">IM</div>
+        <div class="team-name">Inchara M</div>
+        <div class="team-role">Field Investigator</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">MD</div>
+        <div class="team-name">Muthuswamy D</div>
+        <div class="team-role">Field Investigator</div>
+        <div class="team-inst">Institute of Public Health, Bengaluru</div>
+      </div>
+
     </div>
-
-    <div class="team-card">
-      <div class="team-avatar">DU</div>
-      <div class="team-name">Dundamma</div>
-      <div class="team-role">Field Supervisor-cum-Community Health Nurse</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">PA</div>
-      <div class="team-name">Padeyappa</div>
-      <div class="team-role">Field Supervisor-cum-Field Investigator</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">PM</div>
-      <div class="team-name">Parvathi M</div>
-      <div class="team-role">Field Supervisor-cum-Field Investigator</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">RR</div>
-      <div class="team-name">Ratnamma R</div>
-      <div class="team-role">Community Health Nurse</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">SY</div>
-      <div class="team-name">Samy</div>
-      <div class="team-role">Community Health Nurse</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">CP</div>
-      <div class="team-name">Chaitra P</div>
-      <div class="team-role">Field Investigator</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">AS</div>
-      <div class="team-name">Asha S</div>
-      <div class="team-role">Field Investigator</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">IM</div>
-      <div class="team-name">Inchara M</div>
-      <div class="team-role">Field Investigator</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
-    <div class="team-card">
-      <div class="team-avatar">MD</div>
-      <div class="team-name">Muthuswamy D</div>
-      <div class="team-role">Field Investigator</div>
-      <div class="team-inst">Institute of Public Health, Bengaluru</div>
-    </div>
-
   </div>
 
 </section>
