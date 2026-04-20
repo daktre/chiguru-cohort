@@ -701,6 +701,29 @@
   /* ─── PARTNERS ─── */
   #partners { background: var(--cream); }
 
+  .partner-category {
+    margin-top: 2.5rem;
+  }
+
+  .partner-category:first-of-type {
+    margin-top: 3rem;
+  }
+
+  .partner-category-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 500;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.2rem;
+  }
+
+  .partner-category .partners-grid {
+    margin-top: 0;
+  }
+
   .partners-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1245,8 +1268,8 @@
     <div class="hero-badges">
       <span class="badge">Soliga · Jenukuruba · Bettakuruba</span>
       <span class="badge">2,730+ enrolled</span>
-      <span class="badge">2023–2026</span>
-      <span class="badge">DBT India Alliance funded</span>
+      <span class="badge">2023–2027</span>
+      <span class="badge">DBT/Wellcome Trust India Alliance (India Alliance) funded</span>
     </div>
     <div class="hero-actions">
       <a href="#collaborate" class="btn-primary">Collaborate with us</a>
@@ -1295,7 +1318,7 @@
 <section id="design">
   <div class="section-label">Methods &amp; Protocol</div>
   <h2 class="section-title">Study <em>Design</em></h2>
-  <p class="section-body">A rigorous longitudinal cohort following newborns and their families across Adivasi hamlets in Chamarajanagar district.</p>
+  <p class="section-body">A prospective longitudinal cohort following newborns and their families across Adivasi hamlets in Chamarajanagar district.</p>
 
   <div class="design-layout">
     <div class="reveal">
@@ -1510,7 +1533,7 @@
       <div class="team-avatar">YC</div>
       <div class="team-name">Dr. Yogish Channa Basappa</div>
       <div class="team-role">Co-Investigator</div>
-      <div class="team-inst">Assistant Professor and CRTP fellow, Institute of Public Health, Bengaluru</div>
+      <div class="team-inst">Assistant Professor, Institute of Public Health, Bengaluru</div>
     </div>
 
     <div class="team-card">
@@ -1669,88 +1692,117 @@
 <section id="partners">
   <div class="section-label">Institutions &amp; Collaborators</div>
   <h2 class="section-title">Partner <em>Institutions</em></h2>
-  <p class="section-body">CHIGURU is a collaborative effort across leading public health institutions in India, united by a shared commitment to Adivasi health equity.</p>
+  <p class="section-body">CHIGURU is a collaborative effort across leading public health institutions, community organisations, and government bodies in India, united by a shared commitment to Adivasi health equity.</p>
 
-  <div class="partners-grid reveal">
+  <!-- ── IMPLEMENTATION PARTNERS ── -->
+  <div class="partner-category reveal">
+    <div class="partner-category-label">Implementation Partners</div>
+    <div class="partners-grid">
 
-    <div class="partner-card">
-      <div class="partner-abbr">ZBGAS</div>
-      <div class="partner-name">Zilla Budakattu Girijana Abhivruddhi Sangha</div>
-      <div class="partner-desc">Indigenous community gatekeeper organisation representing Soliga peoples. Critical partner in community-led identification of pregnant women and household enrollment.</div>
-      <span class="partner-link">Community partner</span>
+      <a href="https://iphbengaluru.res.in/projects/cah/ctrith/" target="_blank" class="partner-card">
+        <div class="partner-abbr">IPH</div>
+        <div class="partner-name">Institute of Public Health, Bengaluru</div>
+        <div class="partner-desc">Lead institution and home of CTRITH — the Centre for Training, Research and Innovation in Tribal Health — under whose mandate CHIGURU was established.</div>
+        <span class="partner-link">iphbengaluru.res.in ↗</span>
+      </a>
+
+      <a href="https://iphindia.org" target="_blank" class="partner-card">
+        <div class="partner-abbr">IIPH-B</div>
+        <div class="partner-name">Indian Institute of Public Health, Bengaluru (PHFI)</div>
+        <div class="partner-desc">Research and academic partner within the Public Health Foundation of India network, contributing epidemiological and implementation science expertise.</div>
+        <span class="partner-link">iphindia.org ↗</span>
+      </a>
+
+      <div class="partner-card">
+        <div class="partner-abbr">JSS</div>
+        <div class="partner-name">JSS Medical College, Mysore</div>
+        <div class="partner-desc">Clinical partner institution providing medical expertise and infrastructure for CHIGURU's health assessment components in southern Karnataka.</div>
+        <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Details coming soon</span>
+      </div>
+
+      <a href="https://www.indiaalliance.org" target="_blank" class="partner-card">
+        <div class="partner-abbr">IA</div>
+        <div class="partner-name">DBT Wellcome Trust India Alliance</div>
+        <div class="partner-desc">Primary funder of CTRITH, the institutional home of CHIGURU. The India Alliance is an independent public charity supporting health and biomedical research in India.</div>
+        <span class="partner-link">indiaalliance.org ↗</span>
+      </a>
+
     </div>
-
-    <a href="https://www.vgkk.in" target="_blank" class="partner-card">
-      <div class="partner-abbr">VGKK</div>
-      <div class="partner-name">Vivekananda Girijana Kalyana Kendra</div>
-      <div class="partner-desc">Based in BR Hills, provides ancillary care and laboratory support for CHIGURU. Home base of Study Lead Dr. Tanya Seshadri. Delivers culturally-grounded health services to Adivasi communities.</div>
-      <span class="partner-link">vgkk.in ↗</span>
-    </a>
-
-    <div class="partner-card">
-      <div class="partner-abbr">SJRI</div>
-      <div class="partner-name">St. John's Research Institute, Bengaluru</div>
-      <div class="partner-desc">Anthropometry and phlebotomy training, certification, and quality assurance for CHIGURU's health assessment teams.</div>
-      <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Learn more</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-abbr">SGTH</div>
-      <div class="partner-name">Sangath</div>
-      <div class="partner-desc">Provides training and technical support for the Malawi Developmental Assessment Tool (MDAT), enabling rigorous measurement of early childhood development outcomes.</div>
-      <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Learn more</span>
-    </div>
-
-    <div class="partner-card">
-      <div class="partner-abbr">KA-GOV</div>
-      <div class="partner-name">Government of Karnataka</div>
-      <div class="partner-desc">Departments of Health &amp; Family Welfare, Tribal Affairs, and Forests. Provide operational approvals, regulatory oversight, and integration with state health systems serving Adivasi populations.</div>
-      <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Government partner</span>
-    </div>
-
-    <a href="https://iphbengaluru.res.in/projects/cah/ctrith/" target="_blank" class="partner-card">
-      <div class="partner-abbr">IPH</div>
-      <div class="partner-name">Institute of Public Health, Bengaluru</div>
-      <div class="partner-desc">Lead institution and home of CTRITH — the Centre for Training, Research and Innovation in Tribal Health — under whose mandate CHIGURU was established.</div>
-      <span class="partner-link">iphbengaluru.res.in ↗</span>
-    </a>
-
-    <div class="partner-card">
-      <div class="partner-abbr">JSS</div>
-      <div class="partner-name">JSS Medical College, Mysore</div>
-      <div class="partner-desc">Clinical partner institution providing medical expertise and infrastructure for CHIGURU's health assessment components in southern Karnataka.</div>
-      <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Details coming soon</span>
-    </div>
-
-    <a href="https://iphindia.org" target="_blank" class="partner-card">
-      <div class="partner-abbr">IIPH-B</div>
-      <div class="partner-name">Indian Institute of Public Health, Bengaluru (PHFI)</div>
-      <div class="partner-desc">Research and academic partner within the Public Health Foundation of India network, contributing epidemiological and implementation science expertise.</div>
-      <span class="partner-link">iphindia.org ↗</span>
-    </a>
-
-    <a href="https://phfi.org/phfi-center#iprc13" target="_blank" class="partner-card">
-      <div class="partner-abbr">CDLR</div>
-      <div class="partner-name">PHFI Centre for Developmental and Lifecourse Research</div>
-      <div class="partner-desc">Based in Bengaluru, the CDLR shares CHIGURU's DoHaD framework and hosts the MAASTHI urban birth cohort — enabling cross-cohort comparisons between urban and Adivasi populations across Karnataka.</div>
-      <span class="partner-link">phfi.org ↗</span>
-    </a>
-
-    <div class="partner-card partner-coming">
-      <div class="partner-abbr" style="color:var(--muted);">KBCC</div>
-      <div class="partner-name" style="color:var(--muted);">Karnataka Birth Cohorts Consortium</div>
-      <div class="partner-desc">A consortium connecting birth cohort studies across Karnataka to enable data harmonisation, methodological alignment, and collaborative research on early childhood determinants of health.</div>
-      <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Website coming soon</span>
-    </div>
-
-    <a href="https://www.indiaalliance.org" target="_blank" class="partner-card">
-      <div class="partner-abbr">IA</div>
-      <div class="partner-name">DBT Wellcome Trust India Alliance</div>
-      <div class="partner-desc">Primary funder of CTRITH, the institutional home of CHIGURU. The India Alliance is an independent public charity supporting health and biomedical research in India.</div>
-      <span class="partner-link">indiaalliance.org ↗</span>
-    </a>
-
   </div>
+
+  <!-- ── COMMUNITY PARTNERS ── -->
+  <div class="partner-category reveal">
+    <div class="partner-category-label">Community Partners</div>
+    <div class="partners-grid">
+
+      <div class="partner-card">
+        <div class="partner-abbr">ZBGAS</div>
+        <div class="partner-name">Zilla Budakattu Girijana Abhivruddhi Sangha</div>
+        <div class="partner-desc">A community-based organisation (CBO) representing the Soliga, Jenukuruba, and Bettakuruba peoples of Chamarajanagar district. ZBGAS serves as the primary community gatekeeper for CHIGURU, facilitating trust-building, participant identification, and culturally appropriate engagement across Adivasi hamlets.</div>
+        <span class="partner-link">Community-based organisation</span>
+      </div>
+
+      <a href="https://www.vgkk.in" target="_blank" class="partner-card">
+        <div class="partner-abbr">VGKK</div>
+        <div class="partner-name">Vivekananda Girijana Kalyana Kendra</div>
+        <div class="partner-desc">Based in BR Hills, provides ancillary care and laboratory support for CHIGURU. Home base of Study Lead Dr. Tanya Seshadri. Delivers culturally-grounded health services to Adivasi communities.</div>
+        <span class="partner-link">vgkk.in ↗</span>
+      </a>
+
+      <div class="partner-card">
+        <div class="partner-abbr">KA-GOV</div>
+        <div class="partner-name">Government of Karnataka</div>
+        <div class="partner-desc">Departments of Health &amp; Family Welfare, Tribal Affairs, and Forests. Provide operational approvals, regulatory oversight, and integration with state health systems serving Adivasi populations.</div>
+        <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Government partner</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── TRAINING PARTNERS ── -->
+  <div class="partner-category reveal">
+    <div class="partner-category-label">Training Partners</div>
+    <div class="partners-grid">
+
+      <div class="partner-card">
+        <div class="partner-abbr">SJRI</div>
+        <div class="partner-name">St. John's Research Institute, Bengaluru</div>
+        <div class="partner-desc">Anthropometry and phlebotomy training, certification, and quality assurance for CHIGURU's health assessment teams.</div>
+        <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Learn more</span>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-abbr">SGTH</div>
+        <div class="partner-name">Sangath</div>
+        <div class="partner-desc">Provides training and technical support for the Malawi Developmental Assessment Tool (MDAT), enabling rigorous measurement of early childhood development outcomes.</div>
+        <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Learn more</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── KNOWLEDGE PARTNERS ── -->
+  <div class="partner-category reveal">
+    <div class="partner-category-label">Knowledge Partners</div>
+    <div class="partners-grid">
+
+      <a href="https://phfi.org/phfi-center#iprc13" target="_blank" class="partner-card">
+        <div class="partner-abbr">CDLR</div>
+        <div class="partner-name">PHFI Centre for Developmental and Lifecourse Research</div>
+        <div class="partner-desc">Based in Bengaluru, the CDLR shares CHIGURU's DoHaD framework and hosts the MAASTHI urban birth cohort — enabling cross-cohort comparisons between urban and Adivasi populations across Karnataka.</div>
+        <span class="partner-link">phfi.org ↗</span>
+      </a>
+
+      <div class="partner-card partner-coming">
+        <div class="partner-abbr" style="color:var(--muted);">KBCC</div>
+        <div class="partner-name" style="color:var(--muted);">Karnataka Birth Cohorts Consortium</div>
+        <div class="partner-desc">A consortium connecting birth cohort studies across Karnataka to enable data harmonisation, methodological alignment, and collaborative research on early childhood determinants of health.</div>
+        <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Website coming soon</span>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 <!-- ──────────────── FUNDERS ──────────────── -->
