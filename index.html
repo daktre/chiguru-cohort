@@ -104,6 +104,22 @@
   .domain-subgroup:first-of-type { margin-top: 0; }
   .domain-subgroup-label { font-family: 'Cormorant Garamond', serif; font-size: 0.98rem; font-style: italic; color: var(--forest-mid); margin-bottom: 0.5rem; font-weight: 600; }
   .domain-group .domains-grid, .domain-subgroup .domains-grid { margin-top: 0.35rem; }
+
+  /* ── Biomarker sub-row ── */
+  .biomarker-block { margin-top: 0.8rem; }
+  .biomarker-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-weight: 500;
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    display: block;
+  }
+  .biomarker-block .domains-grid { margin-top: 0; }
+
   .protocol-card { background: var(--forest); color: white; padding: 2.2rem; border-radius: 3px; margin-top: 2rem; }
   .protocol-card .pc-label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ochre); margin-bottom: 0.8rem; }
   .protocol-card .pc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; line-height: 1.4; margin-bottom: 1.2rem; color: rgba(255,255,255,0.9); }
@@ -143,16 +159,7 @@
   .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; margin-top: 3rem; background: var(--border); border: 1px solid var(--border); border-radius: 3px; overflow: hidden; }
   .partner-card { background: var(--cream); padding: 2.2rem; transition: background 0.2s; text-decoration: none; display: block; }
   .partner-card:hover { background: var(--parchment); }
-  /* ── PARTNER LOGO ── */
-  .partner-logo {
-    height: 52px;
-    width: auto;
-    max-width: 160px;
-    object-fit: contain;
-    display: block;
-    margin-bottom: 1.2rem;
-    mix-blend-mode: multiply;
-  }
+  .partner-logo { height: 52px; width: auto; max-width: 160px; object-fit: contain; display: block; margin-bottom: 1.2rem; mix-blend-mode: multiply; }
   .partner-abbr { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--forest); margin-bottom: 0.5rem; line-height: 1; }
   .partner-name { font-size: 0.82rem; color: var(--forest-mid); font-weight: 500; margin-bottom: 0.7rem; line-height: 1.3; }
   .partner-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
@@ -248,6 +255,8 @@
     <li><a href="#collaborate" class="nav-cta">Collaborate</a></li>
   </ul>
 </nav>
+
+<!-- ══════════════════════════════════════ HERO ══════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-bg-pattern"></div>
   <div class="hero-deco"></div>
@@ -269,6 +278,8 @@
   </div>
   <div class="hero-scroll">Scroll to explore</div>
 </section>
+
+<!-- ══════════════════════════════════════ ABOUT ══════════════════════════════════════ -->
 <section id="about">
   <div class="section-label">Why this cohort matters</div>
   <h2 class="section-title">Health equity begins<br>at <em>birth</em></h2>
@@ -290,11 +301,15 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ STUDY DESIGN ══════════════════════════════════════ -->
 <section id="design">
   <div class="section-label">Methods &amp; Protocol</div>
   <h2 class="section-title">Study <em>Design</em></h2>
   <p class="section-body">A prospective longitudinal cohort following newborns and their families across Adivasi hamlets in Chamarajanagar district.</p>
   <div class="design-layout">
+
+    <!-- LEFT COL: table + protocol card -->
     <div class="reveal">
       <table class="design-table">
         <tr><td>Study type</td><td>Prospective longitudinal birth cohort</td></tr>
@@ -316,36 +331,119 @@
         <p style="margin-top:1.2rem;font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.7;">The grant from the DBT/Wellcome Trust India Alliance concludes in 2027. The research team is actively seeking financial support to sustain the CHIGURU Adivasi Birth Cohort as an extended generational study; the principal objective is to longitudinally assess the children of this community and their families over several decades, thereby establishing it as one of the few indigenous cohorts globally with substantial longitudinal depth.</p>
       </div>
     </div>
+
+    <!-- RIGHT COL: domains measured -->
     <div class="reveal">
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--forest);margin-bottom:1rem;font-weight:600;">Domains measured</h3>
       <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:0.5rem;">Data is collected at three levels — individual, household, and settlement.</p>
+
+      <!-- ── INDIVIDUAL ── -->
       <div class="domain-group">
         <div class="domain-group-label">Individual</div>
+
+        <!-- Cohort child -->
         <div class="domain-subgroup">
           <div class="domain-subgroup-label">Cohort child (to age 3)</div>
-          <div class="domains-grid"><div class="domain-chip">Anthropometry</div><div class="domain-chip">Immunization</div><div class="domain-chip">Feeding practices</div><div class="domain-chip">Developmental milestones (MDAT)</div><div class="domain-chip">Haemoglobin</div></div>
+          <div class="domains-grid">
+            <div class="domain-chip">Anthropometry</div>
+            <div class="domain-chip">Immunization</div>
+            <div class="domain-chip">Feeding practices</div>
+            <div class="domain-chip">Developmental milestones (MDAT)</div>
+            <div class="domain-chip">Haemoglobin</div>
+          </div>
         </div>
+
+        <!-- Mother -->
         <div class="domain-subgroup">
           <div class="domain-subgroup-label">Mother (postnatal)</div>
-          <div class="domains-grid"><div class="domain-chip">Perinatal &amp; delivery</div><div class="domain-chip">Anthropometry</div><div class="domain-chip">Blood pressure</div><div class="domain-chip">Mental health (EPDS, GAD-7)</div><div class="domain-chip">Social support</div><div class="domain-chip">Substance use</div><div class="domain-chip">24-hr dietary recall</div><div class="domain-chip">Biomarkers: Haemoglobin, Cotinine, Gamma-glutamyl transferase (GGT), Soluble transferrin receptor (sTfR), transferrin</div></div>
+          <div class="domains-grid">
+            <div class="domain-chip">Perinatal &amp; delivery</div>
+            <div class="domain-chip">Anthropometry</div>
+            <div class="domain-chip">Blood pressure</div>
+            <div class="domain-chip">Mental health (EPDS, GAD-7)</div>
+            <div class="domain-chip">Social support</div>
+            <div class="domain-chip">Substance use</div>
+            <div class="domain-chip">24-hr dietary recall</div>
+          </div>
+          <!-- Biomarkers sub-row -->
+          <div class="biomarker-block">
+            <span class="biomarker-label">Biomarkers</span>
+            <div class="domains-grid">
+              <div class="domain-chip">Haemoglobin</div>
+              <div class="domain-chip">Cotinine</div>
+              <div class="domain-chip">Gamma-glutamyl transferase (GGT)</div>
+              <div class="domain-chip">Soluble transferrin receptor (sTfR)</div>
+              <div class="domain-chip">Transferrin</div>
+            </div>
+          </div>
         </div>
+
+        <!-- Father -->
         <div class="domain-subgroup">
           <div class="domain-subgroup-label">Father</div>
-          <div class="domains-grid"><div class="domain-chip">Anthropometry</div><div class="domain-chip">Blood pressure</div><div class="domain-chip">Substance use</div><div class="domain-chip">Mental health (PHQ-9)</div><div class="domain-chip">Chronic conditions</div><div class="domain-chip">24-hr dietary recall</div><div class="domain-chip">Biomarkers:Haemoglobin, cotinine, Gamma-glutamyl transferase (GGT)</div></div>
+          <div class="domains-grid">
+            <div class="domain-chip">Anthropometry</div>
+            <div class="domain-chip">Blood pressure</div>
+            <div class="domain-chip">Substance use</div>
+            <div class="domain-chip">Mental health (PHQ-9)</div>
+            <div class="domain-chip">Chronic conditions</div>
+            <div class="domain-chip">24-hr dietary recall</div>
+          </div>
+          <!-- Biomarkers sub-row -->
+          <div class="biomarker-block">
+            <span class="biomarker-label">Biomarkers</span>
+            <div class="domains-grid">
+              <div class="domain-chip">Haemoglobin</div>
+              <div class="domain-chip">Cotinine</div>
+              <div class="domain-chip">Gamma-glutamyl transferase (GGT)</div>
+            </div>
+          </div>
         </div>
+
+        <!-- Other household members -->
         <div class="domain-subgroup">
-          <div class="domain-subgroup-label">Other household members</div>  
-          <div class="domains-grid"><div class="domain-chip">Anthropometry</div><div class="domain-chip">Blood pressure</div><div class="domain-chip">Substance use</div><div class="domain-chip">Biomarkers:Haemoglobin, cotinine, Gamma-glutamyl transferase (GGT)</div></div>
+          <div class="domain-subgroup-label">Other household members</div>
+          <div class="domains-grid">
+            <div class="domain-chip">Anthropometry</div>
+            <div class="domain-chip">Blood pressure</div>
+            <div class="domain-chip">Substance use</div>
+          </div>
+          <!-- Biomarkers sub-row -->
+          <div class="biomarker-block">
+            <span class="biomarker-label">Biomarkers</span>
+            <div class="domains-grid">
+              <div class="domain-chip">Haemoglobin</div>
+              <div class="domain-chip">Cotinine</div>
+              <div class="domain-chip">Gamma-glutamyl transferase (GGT)</div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- ── HOUSEHOLD ── -->
       <div class="domain-group">
         <div class="domain-group-label">Household</div>
-        <div class="domains-grid"><div class="domain-chip">Wealth index</div><div class="domain-chip">Dietary diversity</div><div class="domain-chip">Food insecurity</div><div class="domain-chip">Indoor air pollution</div><div class="domain-chip">Outdoor air pollution</div><div class="domain-chip">Household composition</div></div>
+        <div class="domains-grid">
+          <div class="domain-chip">Wealth index</div>
+          <div class="domain-chip">Dietary diversity</div>
+          <div class="domain-chip">Food insecurity</div>
+          <div class="domain-chip">Indoor air pollution</div>
+          <div class="domain-chip">Outdoor air pollution</div>
+          <div class="domain-chip">Household composition</div>
+        </div>
       </div>
+
+      <!-- ── SETTLEMENT ── -->
       <div class="domain-group">
         <div class="domain-group-label">Settlement</div>
-        <div class="domains-grid"><div class="domain-chip">Healthcare access</div><div class="domain-chip">Geographic remoteness</div><div class="domain-chip">Urbanisation</div></div>
+        <div class="domains-grid">
+          <div class="domain-chip">Healthcare access</div>
+          <div class="domain-chip">Geographic remoteness</div>
+          <div class="domain-chip">Urbanisation</div>
+        </div>
       </div>
+
+      <!-- Participant identification -->
       <div style="margin-top:2.5rem;">
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--forest);margin-bottom:1rem;font-weight:600;">Participant identification</h3>
         <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;">Pregnant women are mapped through district reproductive and child health officer lists, in partnership with the Zilla Budakattu Girijana Abhivruddhi Sangha (ZBGAS) — the indigenous welfare association of Soliga people — and local ASHAs. A study information video is provided in Kannada (Soliga dialect) before informed consent is sought from all household members.</p>
@@ -353,6 +451,8 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ FINDINGS ══════════════════════════════════════ -->
 <section id="findings">
   <div class="section-label" style="color:var(--ochre);">Early evidence</div>
   <h2 class="section-title">Key <em>Findings</em></h2>
@@ -367,6 +467,8 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ TEAM ══════════════════════════════════════ -->
 <section id="team">
   <div class="section-label">The people behind CHIGURU</div>
   <h2 class="section-title">Our <em>Team</em></h2>
@@ -416,52 +518,40 @@
     </div>
   </div>
 </section>
-<!-- ══════════════════════════════════════
-     PARTNERS  — all logos updated below
-══════════════════════════════════════ -->
+
+<!-- ══════════════════════════════════════ PARTNERS ══════════════════════════════════════ -->
 <section id="partners">
   <div class="section-label">Institutions &amp; Collaborators</div>
   <h2 class="section-title">Partner <em>Institutions</em></h2>
   <p class="section-body">CHIGURU is a collaborative effort across leading public health institutions, community organisations, and government bodies in India, united by a shared commitment to Adivasi health equity.</p>
-  <!-- ── IMPLEMENTATION PARTNERS ── -->
+
+  <!-- IMPLEMENTATION PARTNERS -->
   <div class="partner-category reveal">
     <div class="partner-category-label">Implementation Partners</div>
     <div class="partners-grid">
-      <!-- IPH Bengaluru -->
       <a href="https://iphbengaluru.res.in/projects/cah/ctrith/" target="_blank" class="partner-card">
-        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/80f9635df2b0c827fa2c0122473eeb2f729a4b2f/20th%20Year%20Anniversary%20IPH%20logo%20v1.png"
-             alt="Institute of Public Health, Bengaluru" class="partner-logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/80f9635df2b0c827fa2c0122473eeb2f729a4b2f/20th%20Year%20Anniversary%20IPH%20logo%20v1.png" alt="Institute of Public Health, Bengaluru" class="partner-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="partner-abbr" style="display:none;">IPH</div>
         <div class="partner-name">Institute of Public Health, Bengaluru</div>
         <div class="partner-desc">Lead institution and home of CTRITH — the Centre for Training, Research and Innovation in Tribal Health — under whose mandate CHIGURU was established.</div>
         <span class="partner-link">iphbengaluru.res.in ↗</span>
       </a>
-      <!-- IIPH-B / PHFI -->
       <a href="https://phfi.org/bengaluru" target="_blank" class="partner-card">
-        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/phfi.jpg"
-             alt="Indian Institute of Public Health Bengaluru PHFI" class="partner-logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/phfi.jpg" alt="Indian Institute of Public Health Bengaluru PHFI" class="partner-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="partner-abbr" style="display:none;">IIPH-B</div>
         <div class="partner-name">Indian Institute of Public Health, Bengaluru (PHFI)</div>
         <div class="partner-desc">Research and academic partner within the Public Health Foundation of India network, contributing epidemiological and implementation science expertise.</div>
         <span class="partner-link">phfi.org/bengaluru ↗</span>
       </a>
-      <!-- JSS Medical College -->
       <div class="partner-card">
-        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/JSS.png"
-             alt="JSS Medical College Mysore" class="partner-logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/JSS.png" alt="JSS Medical College Mysore" class="partner-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="partner-abbr" style="display:none;">JSS</div>
         <div class="partner-name">JSS Medical College, Mysore</div>
         <div class="partner-desc">Clinical partner institution providing medical expertise and infrastructure for CHIGURU's health assessment components in southern Karnataka.</div>
         <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Details coming soon</span>
       </div>
-      <!-- India Alliance -->
       <a href="https://www.indiaalliance.org" target="_blank" class="partner-card">
-        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/India%20Alliance_Colour.png"
-             alt="DBT Wellcome Trust India Alliance" class="partner-logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/India%20Alliance_Colour.png" alt="DBT Wellcome Trust India Alliance" class="partner-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="partner-abbr" style="display:none;">IA</div>
         <div class="partner-name">DBT Wellcome Trust India Alliance</div>
         <div class="partner-desc">Primary funder of CTRITH, the institutional home of CHIGURU. The India Alliance is an independent public charity supporting health and biomedical research in India.</div>
@@ -469,28 +559,24 @@
       </a>
     </div>
   </div>
-  <!-- ── COMMUNITY PARTNERS ── -->
+
+  <!-- COMMUNITY PARTNERS -->
   <div class="partner-category reveal">
     <div class="partner-category-label">Community Partners</div>
     <div class="partners-grid">
-      <!-- ZBGAS — no logo available, text fallback -->
       <div class="partner-card">
         <div class="partner-abbr">ZBGAS</div>
         <div class="partner-name">Zilla Budakattu Girijana Abhivruddhi Sangha</div>
         <div class="partner-desc">A community-based organisation (CBO) representing the Soliga, Jenukuruba, and Bettakuruba peoples of Chamarajanagar district. ZBGAS serves as the primary community gatekeeper for CHIGURU, facilitating trust-building, participant identification, and culturally appropriate engagement across Adivasi hamlets.</div>
         <span class="partner-link">Community-based organisation</span>
       </div>
-      <!-- VGKK -->
       <a href="https://www.vgkk.in" target="_blank" class="partner-card">
-        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/Vgkk.jpeg"
-             alt="Vivekananda Girijana Kalyana Kendra" class="partner-logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/Vgkk.jpeg" alt="Vivekananda Girijana Kalyana Kendra" class="partner-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="partner-abbr" style="display:none;">VGKK</div>
         <div class="partner-name">Vivekananda Girijana Kalyana Kendra</div>
         <div class="partner-desc">Based in BR Hills, provides ancillary care and laboratory support for CHIGURU. Home base of Study Lead Dr. Tanya Seshadri. Delivers culturally-grounded health services to Adivasi communities.</div>
         <span class="partner-link">vgkk.in ↗</span>
       </a>
-      <!-- Government of Karnataka — no logo -->
       <div class="partner-card">
         <div class="partner-abbr">KA-GOV</div>
         <div class="partner-name">Government of Karnataka</div>
@@ -499,25 +585,20 @@
       </div>
     </div>
   </div>
-  <!-- ── TRAINING PARTNERS ── -->
+
+  <!-- TRAINING PARTNERS -->
   <div class="partner-category reveal">
     <div class="partner-category-label">Training Partners</div>
     <div class="partners-grid">
-      <!-- St. John's Research Institute -->
       <div class="partner-card">
-        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/st%20johs%20medical.svg"
-             alt="St. John's Research Institute Bengaluru" class="partner-logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/st%20johs%20medical.svg" alt="St. John's Research Institute Bengaluru" class="partner-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="partner-abbr" style="display:none;">SJRI</div>
         <div class="partner-name">St. John's Research Institute, Bengaluru</div>
         <div class="partner-desc">Anthropometry and phlebotomy training, certification, and quality assurance for CHIGURU's health assessment teams.</div>
         <span class="coming-soon-tag" style="display:inline-flex;margin-top:1rem;font-size:0.65rem;background:rgba(200,146,42,0.1);border:1px solid rgba(200,146,42,0.25);color:var(--ochre);padding:0.3rem 0.7rem;letter-spacing:0.12em;text-transform:uppercase;">Learn more</span>
       </div>
-      <!-- Sangath -->
       <div class="partner-card">
-        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/Sangath.png"
-             alt="Sangath" class="partner-logo"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <img src="https://raw.githubusercontent.com/daktre/chiguru-cohort/main/logo/Sangath.png" alt="Sangath" class="partner-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
         <div class="partner-abbr" style="display:none;">SGTH</div>
         <div class="partner-name">Sangath</div>
         <div class="partner-desc">Provides training and technical support for the Malawi Developmental Assessment Tool (MDAT), enabling rigorous measurement of early childhood development outcomes.</div>
@@ -525,7 +606,8 @@
       </div>
     </div>
   </div>
-  <!-- ── KNOWLEDGE PARTNERS ── -->
+
+  <!-- KNOWLEDGE PARTNERS -->
   <div class="partner-category reveal">
     <div class="partner-category-label">Knowledge Partners</div>
     <div class="partners-grid">
@@ -544,6 +626,8 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ FUNDERS ══════════════════════════════════════ -->
 <section id="funders">
   <div class="section-label">Funding &amp; Support</div>
   <h2 class="section-title">Our <em>Funders</em></h2>
@@ -565,6 +649,8 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ COLLABORATE ══════════════════════════════════════ -->
 <section id="collaborate">
   <div class="section-label" style="color:var(--ochre);">Work with us</div>
   <h2 class="section-title">Collaborate <em>with</em> CHIGURU</h2>
@@ -591,6 +677,8 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ PUBLICATIONS ══════════════════════════════════════ -->
 <section id="publications">
   <div class="section-label">Research outputs</div>
   <h2 class="section-title">Publications <em>&amp; Resources</em></h2>
@@ -613,6 +701,8 @@
     </div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ NEWS ══════════════════════════════════════ -->
 <section id="news">
   <div class="section-label">Updates</div>
   <h2 class="section-title">News <em>&amp; Updates</em></h2>
@@ -622,6 +712,8 @@
     <div class="news-card news-placeholder"><div class="news-date">Coming soon</div><div class="news-title">Next update</div><div class="news-body">Quarterly updates on cohort progress, publications, and events will appear here.</div></div>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ GALLERY ══════════════════════════════════════ -->
 <section id="gallery">
   <div class="section-label" style="color:var(--ochre);">From the field</div>
   <h2 class="section-title" style="color:white;">Gallery</h2>
@@ -631,6 +723,8 @@
     <p style="font-size:0.72rem;margin-top:0.3rem;opacity:0.6;">Images from fieldwork, community engagement, and Chamarajanagar will be added here</p>
   </div>
 </section>
+
+<!-- ══════════════════════════════════════ FOOTER ══════════════════════════════════════ -->
 <footer>
   <div class="footer-grid">
     <div>
@@ -647,6 +741,8 @@
     <div class="footer-location"><span>📍</span><span>Chamarajanagar, Karnataka, India</span></div>
   </div>
 </footer>
+
+<!-- Draft banner -->
 <div style="position:fixed;bottom:0;left:0;right:0;z-index:9998;background:#1a1a14;border-top:2px solid #c8922a;padding:0.7rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;font-family:'Jost',sans-serif;">
   <div style="display:flex;align-items:center;gap:0.8rem;">
     <span style="background:#c8922a;color:#1a1a14;font-size:0.62rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px;flex-shrink:0;">Draft</span>
@@ -655,6 +751,7 @@
   <span style="font-size:0.75rem;color:rgba(255,255,255,0.25);white-space:nowrap;">Not for public circulation</span>
 </div>
 <style>footer { padding-bottom: 5rem !important; }</style>
+
 <script>
   if ('IntersectionObserver' in window) {
     document.body.classList.add('js-reveal-ready');
